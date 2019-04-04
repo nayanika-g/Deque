@@ -33,21 +33,29 @@ public class Deque<Item> implements Iterable<Item> {
         first.item = item;
         first.next = oldFirst;
         size++;
+        if (size == 1) {
+            last = first;
+        }
     }
 
     public void addLast(Item item) {
         if (item == null) {
             throw new java.lang.IllegalArgumentException();
         }
-        Node oldLast = last;
+        Node oldLast = first;
+        if (!isEmpty()) {
+            while (oldLast.next != null) {
+                oldLast = oldLast.next;
+            }
+        }
         last = new Node();
         last.item = item;
-        last.next = null;
         if (isEmpty()) {
             first = last;
         } else {
             oldLast.next = last;
         }
+        last.next = null;
         size++;
     }
 
@@ -94,7 +102,7 @@ public class Deque<Item> implements Iterable<Item> {
         }
 
         public Item next() {
-            if (current.item == null) {
+            if (current == null) {
                 throw new java.util.NoSuchElementException();
             }
             Item item = current.item;
@@ -108,28 +116,18 @@ public class Deque<Item> implements Iterable<Item> {
 
     }
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
 
-        Deque<String> d = new Deque();
-        String a = "hello";
-        d.addLast(a);
-        String b = "there";
-        d.addLast(b);
-        String c = "grace";
-        d.addLast(c);
-        for (String str : d) {
-            System.out.println(str);
+        Deque<Integer> deque = new Deque<Integer>();
+        deque.addFirst(1);
+        System.out.println("Item removed = " + deque.removeLast());
+        deque.addLast(3);
+        for (Integer i : deque) {
+            System.out.println(i);
         }
-        assert (d.size() == 3);
-        System.out.println();
 
-        System.out.println(d.removeLast());    //grace
-        assert (d.size() == 2);
-        System.out.println(d.removeLast());    //there
-        assert (d.size() == 1);
-        System.out.println(d.removeLast());    //hello
-        assert (d.size == 0);
-        System.out.println("All tests succeeded!");
-    }
+        System.out.println("All tests passed");
+
+    }*/
 
 }

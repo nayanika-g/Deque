@@ -12,7 +12,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     public boolean isEmpty() {
-        return q.length == 0;
+        return n == 0;
     }
 
     public int size() {
@@ -39,7 +39,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         }
         q[n - 1] = null;
         n--;
-        if (n == (q.length / 4)) {
+        if ((n >= 4) && (n == q.length / 4)) {
             resize(q.length / 2);
         }
         return item;
@@ -95,67 +95,20 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return q.length;
     }*/
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
 
-        RandomizedQueue<String> randq = new RandomizedQueue<String>();
-        String a = "hello";
-        String b = "grace";
-        String c = "what's";
-        String d = "up?";
-        randq.enqueue(d);
-        randq.enqueue(c);
-        randq.enqueue(b);
-        randq.enqueue(a);
-        assert (randq.size() == 4);
-        // assert (randq.getArraySize() == 4);
+        RandomizedQueue<Integer> rq = new RandomizedQueue<Integer>();
 
-        System.out.println("Sample word = " + randq.sample());
-        assert (randq.size() == 4);
-        // assert (randq.getArraySize() == 4);
+        rq.enqueue(3);
+        System.out.println("Item removed = " + rq.dequeue());   //49
+        assert (rq.size() == 0);
+        rq.enqueue(2);
 
-        // DEQUEUE TEST
-
-        /*for (String s : randq) {
-            System.out.print(s + " ");
+        for (Integer i : rq) {
+            System.out.println(i);
         }
-        System.out.println();
-
-        System.out.println("Word = " + randq.dequeue());
-        assert (randq.size() == 3);
-        for (String s : randq) {
-            System.out.print(s + " ");
-        }
-        System.out.println();
-
-        System.out.println("Word = " + randq.dequeue());
-        assert (randq.size() == 2);
-        assert (randq.getArraySize() == 4);
-        for (String s : randq) {
-            System.out.print(s + " ");
-        }
-        System.out.println();
-
-
-        System.out.println("Word = " + randq.dequeue());
-        assert (randq.size() == 1);
-        assert (randq.getArraySize() == 2);
-        for (String s : randq) {
-            System.out.print(s + " ");
-        }
-        System.out.println();
-
-
-        System.out.println("Word = " + randq.dequeue());
-        assert (randq.size() == 0);
-        assert (randq.getArraySize() == 2);
-        for (String s : randq) {
-            System.out.print(s + " ");
-        }
-        System.out.println();*/
-
         System.out.println("All tests passed!");
 
-    }
-
+    }*/
 
 }
